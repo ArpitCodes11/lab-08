@@ -31,5 +31,33 @@ class WizardTest {
         assertEquals(0, damageDealt)
 
         assertEquals(5, evilWizard.mana) // mana still is 5
+
+
+
+    }
+    @Test
+    fun restoreMana_amountAddedExceedsOneHundred_manaSetToOneHundred() {
+        val evilWizard = Wizard(
+            name = "Evil Wizard",
+            mana = 30,
+            spellPower = 10
+        )
+
+        evilWizard.restoreMana(80)
+
+        assertEquals(100, evilWizard.mana)
+    }
+
+    @Test
+    fun restoreMana_amountAddedDoesNotExceedOneHundred_manaIncreasesCorrectly() {
+        val evilWizard = Wizard(
+            name = "Evil Wizard",
+            mana = 30,
+            spellPower = 10
+        )
+
+        evilWizard.restoreMana(40)
+
+        assertEquals(70, evilWizard.mana)
     }
 }
